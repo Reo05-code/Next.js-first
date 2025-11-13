@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import Image from "next/image";
 import { useState, useEffect, use} from 'react';
 import ProductCard from './components/ProductCard';
@@ -25,15 +26,37 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
+      <section className="relative w-full h-[60vh] sm:h-[70vh] overflow-hidden">
+        <Image
+          src="/images/main-visual.jpg"
+          alt="最新コレクションを発見"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-black p-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-md">
+            最新コレクションを発見
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl mb-8 drop-shadow-md">
+            あなたのスタイルをアップグレードするアイテムを見つけよう
+          </p>
+          <Link href="/products">
+            <button className="px-6 py-3 bg-white text-blue-800 font-semibold rounded-full shadow-md hover:bg-gray-200 transition-colors text-sm sm:text-base">
+              今すぐ見る
+            </button>
+          </Link>
+        </div>
+      </section>
+      <main className="container mx-auto px-8 pt-8 pb-12 flex flex-col gap-4 max-w-screen-xl"></main>
         <section>
           <h2>
             <span>Pick Up</span>
-            <span>|</span>
-            <span>おすすめ商品</span>
+            <span className="mx-2 font-light text-gray-400">|</span>
+            <span className="text-base">おすすめ商品</span>
           </h2>
-          <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             {products
               .slice(0, 3)
               .map(item => (
@@ -52,10 +75,10 @@ export default function Home() {
         <section>
           <h2>
             <span>New Arrival</span>
-            <span>|</span>
+            <span className="mx-2 font-light text-gray-400">|</span>
             <span>新着商品</span>
           </h2>
-          <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
             {products
               .slice(0, 4)
               .map(item => (
@@ -74,10 +97,10 @@ export default function Home() {
         <section>
           <h2>
             <span>Hot Items</span>
-            <span>|</span>
+            <span className="mx-2 font-light text-gray-400">|</span>
             <span>注目商品</span>
           </h2>
-          <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
             {products
               .slice(0, 4)
               .map(item => (
@@ -92,7 +115,6 @@ export default function Home() {
               ))}
           </div>
         </section>
-      </main>
     </div>
   );
 }
