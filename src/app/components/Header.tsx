@@ -22,8 +22,8 @@ export default function Header() {
         {/* ナビゲーション */}
         <nav className="flex-grow text-center">
           <ul className="flex justify-center space-x-8 list-none">
-            <li><Link href="/">ホーム</Link></li>
-            <li><Link href="/products">商品一覧</Link></li>
+            <li className="border-r border-gray-300 pr-8"><Link href="/">ホーム</Link></li>
+            <li className="border-r border-gray-300 pr-8"><Link href="/products">商品一覧</Link></li>
             <li><Link href="/contact">お問い合わせ</Link></li>
           </ul>
         </nav>
